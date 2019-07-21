@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-
+const moment = require('moment');
 const Game = require('../models/game.model');
 
 exports.create_game = (req, res, next) => {
     const game = new Game({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
-        release_date: req.body.release_date,
+        release_date: moment(req.body.release_date, 'DD/MM/YYYY').format('YYYY-MM-DD'),
         minimun_android_version: req.body.minimun_android_version,
         minimun_api_version: req.body.minimun_api_version,
         minimum_ram: req.body.minimum_ram,
@@ -35,6 +35,7 @@ exports.create_game = (req, res, next) => {
             })
         })
         .catch((err) => {
+            console.log('err', err)
             return res.status(500).json({
                 success: false,
                 response: err

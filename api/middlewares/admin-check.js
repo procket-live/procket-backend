@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
         .then((admin) => {
             console.log('admin', admin)
             if (admin.length < 1) {
-                return res.status(401).json({
+                return res.status(200).json({
                     success: false,
                     response: 'Not an admin'
                 })
@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
             next();
         })
         .catch((err) => {
-            return res.status(401).json({
+            return res.status(200).json({
                 success: false,
                 response: 'Not an admin'
             })

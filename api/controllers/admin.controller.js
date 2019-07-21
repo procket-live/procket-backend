@@ -26,6 +26,13 @@ exports.set_admin = (req, res, next) => {
     return;
 }
 
+exports.check_admin = (req, res) => {
+    return res.status(201).json({
+        success: true,
+        response: 'Success',
+    })
+}
+
 exports.get_admins = (req, res, next) => {
     Admin.find()
         .populate('user')
