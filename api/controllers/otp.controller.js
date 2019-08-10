@@ -2,6 +2,7 @@ const moment = require('moment');
 const mongoose = require('mongoose');
 
 const Otp = require('../models/otp.model');
+const MSG91SendSMS = require('../class/msg91/sendSMS');
 
 exports.generate_top = (req, res, next) => {
     const generatedOtp = Math.floor(100000 + Math.random() * 900000);
@@ -16,10 +17,13 @@ exports.generate_top = (req, res, next) => {
     otp
         .save()
         .then(() => {
-            return res.status(201).json({
+            const template = `Welcome to procket. One Time Password to verify mobile number is ${generatedOtp}`;
+            MSG91SendSMS(req.body.mobile, template);
+            res.status(201).json({
                 success: true,
                 response: 'OTP sent successfully',
             })
+            return;
         })
         .catch((err) => {
             return res.status(200).json({

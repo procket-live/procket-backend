@@ -19,6 +19,7 @@
     "express": "4.17.0",
     "fastify": "2.4.1",
     "firebase-admin": "^8.1.0",
+    "http": "0.0.0",
     "https": "^1.0.0",
     "jsonwebtoken": "8.5.1",
     "moment": "^2.24.0",
