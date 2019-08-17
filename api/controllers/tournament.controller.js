@@ -10,7 +10,6 @@ exports.create_tournament = (req, res, next) => {
         created_at: Date.now(),
         created_by: userId,
         game: req.body.game_id,
-        pricing: req.body.pricing,
         game_meta: req.body.game_meta,
         start_time: req.body.start_time,
         closing_time: req.body.closing_time,
